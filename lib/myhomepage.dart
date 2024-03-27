@@ -29,21 +29,9 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
+  bool isActiveMale = false;
+  bool isActiveFemale = false;
 
-  void changeColours(Gender gender){
-    if( gender == Gender.male){
-      if(maleColour == inactiveColour){
-        maleColour = activeColour;
-        femaleColour = inactiveColour;
-      }
-    }
-    if( gender == Gender.female){
-      if(femaleColour == inactiveColour){
-        femaleColour = activeColour;
-        maleColour = inactiveColour;
-      }
-    }
-  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,7 +39,8 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(
           widget.title,
           style: TextStyle(
-              fontSize: 23, fontWeight: FontWeight.bold, color: Colors.white),
+              fontSize: 23, fontWeight: FontWeight.bold, color: Colors.white
+          ),
         ),
         centerTitle: true,
       ),
@@ -65,12 +54,12 @@ class _MyHomePageState extends State<MyHomePage> {
                    child:  GestureDetector(
                       onTap: () {
                         setState(() {
-                          changeColours(Gender.male);
-
+                          isActiveFemale = false;
+                          isActiveMale = true;
                         });
                       },
                     child: Mycard(
-                      colours: maleColour,
+                      colours: isActiveMale ? activeColour : inactiveColour,
                       cardChild: cardChild(icon: FontAwesomeIcons.mars,text: 'MALE',),
                     ),
                   ),
@@ -79,11 +68,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: GestureDetector(
                     onTap: () {
                      setState(() {
-                       changeColours(Gender.female);
+                       isActiveFemale = true;
+                       isActiveMale = false;
                      });
                     },
                     child: Mycard(
-                      colours: femaleColour,
+                      colours: isActiveFemale ? activeColour : inactiveColour,
                       cardChild: cardChild(icon: FontAwesomeIcons.venus,text: 'FEMALE',),
                     ),
                   ),
@@ -103,20 +93,18 @@ class _MyHomePageState extends State<MyHomePage> {
                 Expanded(
                   child: Mycard(
                     colours: Color(0xFF111328),
-
                   ),
                 ),
                 Expanded(
                   child: Mycard(
                     colours: Color(0xFF111328),
-
                   ),
                 ),
               ],
             ),
           ),
           Container(
-            color: Colors.amber,
+            color: Colors.amberAccent,
             height: 80,
             width: double.infinity,
             margin: EdgeInsets.all(15),
