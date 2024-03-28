@@ -191,11 +191,18 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             ),
           ),
-          Container(
-            color: Colors.amberAccent,
-            height: 80,
-            width: double.infinity,
-            margin: EdgeInsets.all(15),
+          GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, '/second');
+            },
+            child: Container(
+              child: Center(child: Text("CALCULATE", style: kLargeContainerColour,)),
+              color: Colors.amberAccent,
+              height: 80,
+              width: double.infinity,
+              margin: EdgeInsets.all(15),
+              padding: EdgeInsets.only(bottom: 20),
+            ),
           ),
         ],
       ),

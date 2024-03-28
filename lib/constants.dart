@@ -13,3 +13,10 @@ const kLabelTextStyle = TextStyle(
 );
 
 const knumberTextStyle =  TextStyle(color: Colors.white, fontSize: 50, fontWeight: FontWeight.w900);
+
+const kLargeContainerColour = TextStyle(
+  fontSize : 20.0,
+  fontWeight: FontWeight.bold,
+  color: Colors.black
+
+);

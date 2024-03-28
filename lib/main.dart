@@ -1,3 +1,4 @@
+import 'package:bmicalculator/results_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -21,7 +22,10 @@ class MyApp extends StatelessWidget {
           backgroundColor: Color(0xFF090E21),
         ),
       ),
-      home: const MyHomePage(title: 'BMI Calculator'),
+      routes: {
+        '/': (context) => const MyHomePage(title: 'BMI Calculator',),
+        '/second': (context) =>  ResultsPage(),
+      }
     );
   }
 }
