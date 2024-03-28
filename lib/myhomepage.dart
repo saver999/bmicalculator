@@ -23,6 +23,8 @@ class _MyHomePageState extends State<MyHomePage> {
   bool isActiveMale = false;
   bool isActiveFemale = false;
   int height = 180;
+  int weight = 60;
+  int age = 25;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -135,11 +137,55 @@ class _MyHomePageState extends State<MyHomePage> {
                 Expanded(
                   child: Mycard(
                     colours: Color(0xFF111328),
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("WEIGHT", style: kLabelTextStyle,),
+                        Text("$weight", style: knumberTextStyle,),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            CustomButton(icon: Icons.remove, onPressed: () {
+                              setState(() {
+                                weight--;
+                              });
+                            },),
+                            CustomButton(icon: Icons.add, onPressed: () {
+                              setState(() {
+                                weight++;
+                              });
+                            },),
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                 ),
                 Expanded(
                   child: Mycard(
                     colours: Color(0xFF111328),
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("AGE", style: kLabelTextStyle,),
+                        Text("$age", style: knumberTextStyle,),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            CustomButton(icon: Icons.remove, onPressed: () {
+                              setState(() {
+                                age--;
+                              });
+                            },),
+                            CustomButton(icon: Icons.add, onPressed: () {
+                              setState(() {
+                                age++;
+                              });
+                            },),
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ],
@@ -155,4 +201,29 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
+}
+
+class CustomButton extends StatelessWidget {
+  final IconData icon;
+  final VoidCallback onPressed;
+
+  const CustomButton({required this.icon, required this.onPressed});
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: onPressed,
+      child: Icon(
+        icon,
+        color: Colors.white,
+        size: 23,
+      ),
+      style: ElevatedButton.styleFrom(
+        padding: EdgeInsets.all(13),
+        shape: CircleBorder(),
+        fixedSize: Size(0, 52),
+        backgroundColor: Color(0xFF4C4F5E)
+      ),
+    );
+  }
+
 }
