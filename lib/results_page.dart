@@ -1,9 +1,17 @@
+import "package:flutter/cupertino.dart";
+import "package:flutter/foundation.dart";
 import"package:flutter/material.dart";
-
+import "package:flutter/widgets.dart";
+import 'calculator_bmi.dart';
 import "constants.dart";
 import "mycard.dart";
-
+import 'calculator_bmi.dart';
 class ResultsPage extends StatelessWidget{
+  final String interpretation;
+  final String bmiResult;
+  final String resultText;
+
+  ResultsPage({required this.interpretation, required this.bmiResult, required this.resultText});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,17 +43,21 @@ class ResultsPage extends StatelessWidget{
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Text(
-                  "NORMAL",
+                   resultText,
+
                   style: kresultTextStyle,
 
                 ),
                 Text(
-                   '18',
+                   bmiResult,
                   style: knumberTextStyle,
                   ),
-                Text(
-                  'okay va tutto bene',
-                  style: kLabelTextStyle,
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    interpretation,
+                    style: kLabelTextStyle,
+                  ),
                 ),
               ],
             ),

@@ -1,5 +1,7 @@
 import 'dart:ui';
 
+import 'package:bmicalculator/calculator_bmi.dart';
+import 'package:bmicalculator/results_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -193,7 +195,9 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           GestureDetector(
             onTap: () {
-              Navigator.pushNamed(context, '/second');
+             Calculator calc = Calculator(height, weight);
+
+              Navigator.push(context, MaterialPageRoute(builder: (context) => ResultsPage(interpretation: calc.getInterpretation(), bmiResult: calc.calculateBMI(), resultText: calc.getResults())));
             },
             child: Container(
               child: Center(child: Text("CALCULATE", style: kLargeContainerColour,)),
